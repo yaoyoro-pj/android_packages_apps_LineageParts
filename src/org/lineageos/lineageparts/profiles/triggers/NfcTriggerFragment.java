@@ -85,10 +85,12 @@ public class NfcTriggerFragment extends Fragment implements NFCProfileTagCallbac
     }
 
     private void disableTagWriteMode() {
+        if (mNfcAdapter == null) return;
         mNfcAdapter.disableForegroundDispatch(getActivity());
     }
 
     private void enableTagWriteMode() {
+        if (mNfcAdapter == null) return;
         IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
         IntentFilter[] writeTagFilters = new IntentFilter[]{
                 tagDetected
